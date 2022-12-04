@@ -3,8 +3,9 @@ fun main(){
     val lines = input.lines()
     val vals = lines.map { Regex("""(\d+)-(\d+),(\d+)-(\d+)""").find(it)!! }
         .map(::matchesToInts)
-    val p1 = vals.count { (a,b,c,d) -> (c >= a && d <= b) || (a >= c && b <= d) }
-    val p2 = vals.count { (a,b,c,d) -> (a..b).intersect((c..d)).isNotEmpty() }
+        .map { (a,b,c,d) -> Pair((a..b).toSet(),(c..d).toSet()) }
+    val p1 = vals.count { (a, b) -> a.containsAll(b) || b.containsAll(b) }
+    val p2 = vals.count { (a,b) -> a.intersect(b).isNotEmpty() }
     println(p1)
     println(p2)
 }
