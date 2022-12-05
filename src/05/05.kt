@@ -19,7 +19,7 @@ fun solve(part: Int) {
         }
     }
     for(line in lines.drop(m+2)){
-        val (a,b,c) = matchesToInts(Regex("""move (\d+) from (\d+) to (\d+)""").find(line)!!)
+        val (a,b,c) = Regex("""move (\d+) from (\d+) to (\d+)""").find(line)!!.ints()
         val temp = Stack<Char>();
         for(idk in 0 until a){
             temp.add(stacks[b-1].pop())

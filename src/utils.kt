@@ -9,3 +9,6 @@ fun matchesToInts(matches: MatchResult): List<Int> {
     return matches.groupValues.drop(1).map { it.toInt() }
 }
 
+fun MatchResult.ints(): List<Int> {
+    return matchesToInts(this)
+}
