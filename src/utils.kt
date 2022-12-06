@@ -5,10 +5,8 @@ fun readInput(real: Boolean): String {
     return file.readText().replace("\r\n", "\n")
 }
 
-fun matchesToInts(matches: MatchResult): List<Int> {
-    return matches.groupValues.drop(1).map { it.toInt() }
+fun MatchResult.ints(): List<Int> {
+    return this.groupValues.drop(1).map { it.toInt() }
 }
 
-fun MatchResult.ints(): List<Int> {
-    return matchesToInts(this)
-}
+val matchesToInts = MatchResult::ints
