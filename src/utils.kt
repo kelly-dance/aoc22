@@ -6,7 +6,7 @@ fun readInput(real: Boolean): String {
 }
 
 fun MatchResult.ints(): List<Int> {
-    return this.groupValues.drop(1).map { it.toInt() }
+    return this.groupValues.drop(1).map(String::toInt)
 }
 
 val matchesToInts = MatchResult::ints
