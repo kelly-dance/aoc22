@@ -10,3 +10,14 @@ fun MatchResult.ints(): List<Int> {
 }
 
 val matchesToInts = MatchResult::ints
+
+fun<K, V> MutableMap<K, V>.applyOn(key: K, fn: (value: V) -> V) = apply {
+    this[key] = fn(this.getValue(key))
+}
+
+fun<K> MutableSet<K>.containsAdd(key: K): Boolean {
+    if(this.contains(key)) return true
+    this.add(key)
+    return false
+}
+
