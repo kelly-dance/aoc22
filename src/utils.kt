@@ -21,3 +21,10 @@ fun<K> MutableSet<K>.containsAdd(key: K): Boolean {
     return false
 }
 
+class DefaultMap<K, V>(val deriveDefault: (key: K) -> V) : HashMap<K, V>() {
+    override operator fun get(key: K): V {
+        return super.get(key) ?: deriveDefault(key)
+    }
+}
+
+
