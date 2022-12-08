@@ -1,7 +1,6 @@
 fun main(){
     val text = readInput(real = true)
     val path = mutableListOf<String>()
-    val files = mutableSetOf<String>()
     val dirSizes = DefaultMap<String, Int> { 0 }
     for(line in text.lines()){
         if(line.startsWith("$ ls")) continue
@@ -11,7 +10,6 @@ fun main(){
         }else{
             if(line.startsWith("dir")) continue
             val (nums, name) = line.split(" ")
-            if(files.containsAdd(path.joinToString("/") + "/ " + name)) continue
             path.runningReduce { a, c -> "$a/$c" }.forEach { dirSizes[it] += nums.toInt() }
         }
     }

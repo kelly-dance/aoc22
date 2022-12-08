@@ -1,29 +1,21 @@
 
 class FileSystem {
     var size = 0
-    val files = HashSet<String>()
     val folders = HashMap<String, FileSystem>()
 
     init {
         instances.add(this)
     }
 
-    fun contains(path: List<String>, file: String): Boolean {
-        if(path.size == 0) return files.contains(file)
-        else return folders[path[0]]?.contains(path.drop(1), file) ?: false
-    }
-
-    fun add(path: List<String>, file: String, amt: Int) {
+    fun add(path: List<String>, amt: Int) {
         size += amt
         if(path.isNotEmpty()) {
             if(folders.containsKey(path[0])){
-                folders[path[0]]!!.add(path.drop(1), file, amt)
+                folders[path[0]]!!.add(path.drop(1), amt)
             } else {
                 folders[path[0]] = FileSystem()
-                folders[path[0]]!!.add(path.drop(1), file, amt)
+                folders[path[0]]!!.add(path.drop(1), amt)
             }
-        }else{
-            files.add(file)
         }
     }
 
@@ -46,8 +38,7 @@ fun main(){
             if(line.startsWith("dir")) continue
             val (nums, name) = line.split(" ")
             val num = nums.toInt()
-            if(!root.contains(path, name))
-                root.add(path, name, num)
+            root.add(path, num)
         }
     }
     var p1 = 0
