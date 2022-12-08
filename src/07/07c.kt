@@ -1,5 +1,5 @@
 fun main(){
-    val text = readInput(true)
+    val text = readInput(real = true)
     val path = mutableListOf<String>()
     val files = mutableSetOf<String>()
     val dirSizes = DefaultMap<String, Int> { 0 }

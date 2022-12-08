@@ -33,7 +33,7 @@ class FileSystem {
 }
 
 fun main(){
-    val text = readInput(true)
+    val text = readInput(real = true)
     val lines = text.lines()
     val path = mutableListOf<String>()
     val root = FileSystem()
