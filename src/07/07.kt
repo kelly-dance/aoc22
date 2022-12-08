@@ -16,5 +16,5 @@ fun main(){
         }
     }
     println(dirSizes.values.filter { it <= 100_000 }.sum())
-    println(dirSizes.values.filter { it >= dirSizes["/"]!! - 40_000_000 }.min())
+    println(dirSizes.values.filter { it >= dirSizes["/"] - 40_000_000 }.min())
 }
